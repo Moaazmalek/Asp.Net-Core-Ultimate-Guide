@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="MiddlewareExample/MiddlewareExample.csproj" Id="c7b3f64e-5b93-4f11-91f4-3388f87a1c05" />
   <Project Path="MyFirstApp/MyFirstApp.csproj" />
+  <Project Path="UseWhenExample/UseWhenExample.csproj" Id="3fc89340-cb8e-405b-9a85-56a9d47a2a79" />
 </Solution>
