@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="MiddlewareExample/MiddlewareExample.csproj" Id="c7b3f64e-5b93-4f11-91f4-3388f87a1c05" />
   <Project Path="MyFirstApp/MyFirstApp.csproj" />
+  <Project Path="RoutingExample/RoutingExample.csproj" Id="ee1bbc67-031a-42a9-8564-2f379ec010ba" />
+  <Project Path="StatifFilesExample/StatifFilesExample.csproj" Id="c9bccf65-232b-4e9a-9673-0982600204f2" />
   <Project Path="UseWhenExample/UseWhenExample.csproj" Id="3fc89340-cb8e-405b-9a85-56a9d47a2a79" />
 </Solution>
