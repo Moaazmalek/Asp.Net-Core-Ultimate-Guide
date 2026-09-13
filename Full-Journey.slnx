@@ -2,6 +2,7 @@
   <Project Path="ControllersExample/ControllersExample.csproj" Id="9fb654f7-eff4-40f9-aeff-363319b05442" />
   <Project Path="IActionResultExample/IActionResultExample.csproj" Id="0eb788c5-7197-4ef0-943a-1455163d5434" />
   <Project Path="MiddlewareExample/MiddlewareExample.csproj" Id="c7b3f64e-5b93-4f11-91f4-3388f87a1c05" />
+  <Project Path="ModelValidationsExample/ModelValidationsExample.csproj" Id="18bc611c-108c-4c52-a2be-78b6752a50f4" />
   <Project Path="MyFirstApp/MyFirstApp.csproj" />
   <Project Path="RoutingExample/RoutingExample.csproj" Id="ee1bbc67-031a-42a9-8564-2f379ec010ba" />
   <Project Path="StatifFilesExample/StatifFilesExample.csproj" Id="c9bccf65-232b-4e9a-9673-0982600204f2" />
