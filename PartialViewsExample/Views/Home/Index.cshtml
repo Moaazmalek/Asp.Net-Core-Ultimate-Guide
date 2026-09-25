@@ -1,0 +1,54 @@
+﻿
+@{ /*@{
+    ListModel listModel = new()
+            {
+                ListTitle = "Countries",
+                ListItems = new()
+        {
+             "USA",
+        "Canada",
+        "Japan",
+        "Germany",
+        "India"
+        }
+            };
+  
+}
+@* @{
+    ViewData["ListTitle"] = "Countries";
+    ViewData["ListItems"] = new List<string>()
+    {
+        "USA",
+        "Canada",
+        "Japan",
+        "Germany",
+        "India"
+    };
+} *@
+
+<h1>Home</h1>
+<div class="box">
+    <partial name="_ListPartialView" model="listModel"></partial>
+</div>
+
+*/}
+
+<h1>Home</h1>
+<button
+    class="button button-blue-back" 
+    type="button"
+    id="button-load"
+>Load Programming Langueges</button>
+<div class="box programming-languages-content">
+
+</div>
+<script>
+    document.querySelector("#button-load")
+    .addEventListener("click",async function(){
+       var response=await fetch("programming-languages")
+       var languages= await response.text();
+       document.querySelector(".programming-languages-content")
+       .innerHTML= languages;
+
+    });
+</script>
