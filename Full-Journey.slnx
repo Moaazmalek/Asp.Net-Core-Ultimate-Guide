@@ -9,5 +9,6 @@
   <Project Path="RoutingExample/RoutingExample.csproj" Id="ee1bbc67-031a-42a9-8564-2f379ec010ba" />
   <Project Path="StatifFilesExample/StatifFilesExample.csproj" Id="c9bccf65-232b-4e9a-9673-0982600204f2" />
   <Project Path="UseWhenExample/UseWhenExample.csproj" Id="3fc89340-cb8e-405b-9a85-56a9d47a2a79" />
+  <Project Path="ViewComponentsExample/ViewComponentsExample.csproj" Id="54ab2cb9-63f7-4904-b62c-335168a33df2" />
   <Project Path="ViewsExample/ViewsExample.csproj" Id="e072b931-c628-4aca-aed6-00ebbd3398b0" />
 </Solution>
