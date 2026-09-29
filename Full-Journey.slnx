@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ConfigurationExample/ConfigurationExample.csproj" Id="87daf8cc-9942-4ad3-8cd1-864dcd5cdadf" />
   <Project Path="ControllersExample/ControllersExample.csproj" Id="9fb654f7-eff4-40f9-aeff-363319b05442" />
   <Project Path="DIExample/DIExample.csproj" Id="c6fd124c-0873-4198-9697-6877cb5c800a" />
   <Project Path="DIExampleServices/DIExampleServices.csproj" Id="4893ede4-adac-4bac-836e-80852dff08b7" />
@@ -11,6 +12,7 @@
   <Project Path="PartialViewsExample/PartialViewsExample.csproj" Id="b6354e28-5ff1-44f0-932b-964185f7f88b" />
   <Project Path="RoutingExample/RoutingExample.csproj" Id="ee1bbc67-031a-42a9-8564-2f379ec010ba" />
   <Project Path="StatifFilesExample/StatifFilesExample.csproj" Id="c9bccf65-232b-4e9a-9673-0982600204f2" />
+  <Project Path="StocksApp/StocksApp.csproj" Id="6fd194cf-f96e-4c4c-bdf0-22a26d05e1e1" />
   <Project Path="UseWhenExample/UseWhenExample.csproj" Id="3fc89340-cb8e-405b-9a85-56a9d47a2a79" />
   <Project Path="ViewComponentsExample/ViewComponentsExample.csproj" Id="54ab2cb9-63f7-4904-b62c-335168a33df2" />
   <Project Path="ViewsExample/ViewsExample.csproj" Id="e072b931-c628-4aca-aed6-00ebbd3398b0" />
