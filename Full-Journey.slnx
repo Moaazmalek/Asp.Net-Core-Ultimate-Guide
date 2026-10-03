@@ -1,8 +1,11 @@
 <Solution>
   <Project Path="ConfigurationExample/ConfigurationExample.csproj" Id="87daf8cc-9942-4ad3-8cd1-864dcd5cdadf" />
   <Project Path="ControllersExample/ControllersExample.csproj" Id="9fb654f7-eff4-40f9-aeff-363319b05442" />
+  <Project Path="CRUDExample/CRUDExample.csproj" Id="85297e63-a63c-4925-8489-e39bcbfcc578" />
+  <Project Path="CRUDTests/CRUDTests.csproj" Id="25656d00-5eea-43bf-9bf1-225551467ec7" />
   <Project Path="DIExample/DIExample.csproj" Id="c6fd124c-0873-4198-9697-6877cb5c800a" />
   <Project Path="DIExampleServices/DIExampleServices.csproj" Id="4893ede4-adac-4bac-836e-80852dff08b7" />
+  <Project Path="Entities/Entities.csproj" Id="86499adb-075c-4e91-a966-39e89ab8be31" />
   <Project Path="EnvironmentsExample/EnvironmentsExample.csproj" Id="2f72b1f3-2f02-4795-bd5f-e11eb721f868" />
   <Project Path="IActionResultExample/IActionResultExample.csproj" Id="0eb788c5-7197-4ef0-943a-1455163d5434" />
   <Project Path="LayouViewsExample/LayouViewsExample.csproj" Id="0c67a911-a5b6-4a39-b05c-6a11766e915d" />
