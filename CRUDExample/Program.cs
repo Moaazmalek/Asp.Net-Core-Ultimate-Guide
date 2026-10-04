@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Register Services
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICountriesService, CountriesService>();
-builder.Services.AddScoped<IPersonsService, PersonsService>();
+builder.Services.AddSingleton<IPersonsService, PersonsService>();
 
 var app = builder.Build();
 // Use Services
