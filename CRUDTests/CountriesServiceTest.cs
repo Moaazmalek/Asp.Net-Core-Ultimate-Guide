@@ -11,7 +11,7 @@ namespace CRUDTests
         private readonly ICountriesService _countriesService;
         public CountriesServiceTest( )
         {
-            this._countriesService = new CountriesService();
+            this._countriesService = new CountriesService(false);
         }
         #region AddCountry
         //When CountryAddRequest is null, it should throw ArgumentNullException
