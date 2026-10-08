@@ -82,9 +82,17 @@ namespace Entities.DTO
                 Address = person.Address,
                 CountryID = person.CountryID,
                 Age=(person.DateOfBirth !=null) ?Math.Round((DateTime.Now - person.DateOfBirth.Value).TotalDays / 365.25) : null ,
-                ReceiveNewsLetters = person.ReceiveNewsLetters
+                ReceiveNewsLetters = person.ReceiveNewsLetters ,
+                Country=person.Country?.CountryName
             };
         }
-         
+
+      //public static PersonResponse ConvertPersonIntoPersonResponse(Person person)
+      //  {
+      //      PersonResponse personResponse = person.ToPersonResponse();
+      //      personResponse.Country = person.Country?.CountryName;
+      //      return personResponse;
+      //  }
+
     }
 }
