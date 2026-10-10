@@ -3,15 +3,23 @@ using Entities.DTO;
 using Entities.ServiceContracts;
 using Entities.Services;
 using Entities;
-
+using EntityFrameworkCoreMock;
+using Moq;
 namespace CRUDTests
 {
     public class CountriesServiceTest
     {
         private readonly ICountriesService _countriesService;
-        public CountriesServiceTest( )
+        public CountriesServiceTest( ) 
         {
-            _countriesService = new CountriesService(new PersonsDbContext(new DbContextOptionsBuilder<PersonsDbContext>().Options));
+            var countriesInitialData = new List<Country>();
+            DbContextMock<ApplicationDbContext> dbContextMock = new(new DbContextOptionsBuilder<ApplicationDbContext>().Options);
+
+
+            ApplicationDbContext dbContext = dbContextMock.Object;
+
+            dbContextMock.CreateDbSetMock(temp => temp.Countries, countriesInitialData);
+            _countriesService = new CountriesService(dbContext);
         }
         #region AddCountry
         //When CountryAddRequest is null, it should throw ArgumentNullException

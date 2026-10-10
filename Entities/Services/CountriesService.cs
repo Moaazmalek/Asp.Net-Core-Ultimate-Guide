@@ -6,8 +6,8 @@ namespace Entities.Services
 {
     public class CountriesService : ICountriesService
     {
-        private readonly PersonsDbContext _db; 
-        public CountriesService(PersonsDbContext personsDbContext)
+        private readonly ApplicationDbContext _db; 
+        public CountriesService(ApplicationDbContext personsDbContext)
         {
             _db = personsDbContext;
         }

@@ -64,5 +64,5 @@ namespace Entities.ServiceContracts
         /// </summary>
         /// <returns>Returns the memory Stream with CSV data</returns>
         Task<MemoryStream> GetPersonsCSV();
-    }
+    } 
 }
