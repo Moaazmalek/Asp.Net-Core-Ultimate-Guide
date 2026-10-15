@@ -1,16 +1,20 @@
-﻿
-
-using Entities.ServiceContracts.Enums;
-using System.ComponentModel.DataAnnotations;  
-namespace Entities.DTO
+﻿using System.ComponentModel.DataAnnotations;
+using ServiceContracts.Enums;
+using Entities;
+namespace ServiceContracts.DTO
 {
-    public class PersonAddRequest
+    /// <summary>
+    /// Represents the DTO class that contains the person details to update
+    /// </summary>
+    public class PersonUpdateRequest
     {
-        [Required(ErrorMessage ="Person Name can't be blank")]
+        [Required]
+        public Guid PersonID { get; set; }
+        [Required(ErrorMessage = "Person Name can't be blank")]
         public string? PersonName { get; set; }
 
-        [Required(ErrorMessage ="Email can't be blank")]
-        [EmailAddress(ErrorMessage ="Email value should be a valid email")]
+        [Required(ErrorMessage = "Email can't be blank")]
+        [EmailAddress(ErrorMessage = "Email value should be a valid email")]
         [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
 
@@ -23,11 +27,12 @@ namespace Entities.DTO
         /// <summary>
         /// Converts the current object of PersonAddRequest into a new object of Person object
         /// </summary>
-        /// <returns></returns>
-        public Person ToPerson( )
+        /// <returns>Person Object</returns>
+        public Person ToPerson()
         {
             return new Person()
             {
+                PersonID=PersonID,
                 PersonName = PersonName,
                 DateOfBirth = DateOfBirth,
                 Gender = Gender.ToString(),
@@ -37,5 +42,6 @@ namespace Entities.DTO
                 ReceiveNewsLetters = ReceiveNewsLetters
             };
         }
-    }
+    
+}
 }

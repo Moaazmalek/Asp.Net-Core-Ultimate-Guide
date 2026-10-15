@@ -1,11 +1,11 @@
 ﻿using Entities;
-using Entities.DTO;
-using Entities.ServiceContracts;
-using Entities.ServiceContracts.Enums;
- using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
+using ServiceContracts;
+using ServiceContracts.DTO;
+using ServiceContracts.Enums;
 
 namespace CRUDExample.Controllers
 {
@@ -74,7 +74,7 @@ namespace CRUDExample.Controllers
                     Value = c.CountryID.ToString()
                 });
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-                return View();
+                return View(personAddRequest);
             }
             PersonResponse personResponse =await _personService.AddPerson(personAddRequest);
 

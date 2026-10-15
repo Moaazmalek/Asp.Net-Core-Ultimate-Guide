@@ -1,5 +1,5 @@
-﻿ 
-namespace Entities.DTO
+﻿using Entities;
+namespace ServiceContracts.DTO
 {
     /// <summary>
     /// DTO class for adding a new country

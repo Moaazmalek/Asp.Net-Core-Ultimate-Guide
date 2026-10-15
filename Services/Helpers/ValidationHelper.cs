@@ -1,9 +1,6 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 
-using Entities.DTO;
-using System.ComponentModel.DataAnnotations;
-
-namespace Entities.Services.Helpers
+namespace Services.Helpers
 {
     public class ValidationHelper
     {

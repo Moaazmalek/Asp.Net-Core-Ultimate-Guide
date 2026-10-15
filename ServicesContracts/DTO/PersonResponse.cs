@@ -1,7 +1,6 @@
-﻿using Entities.ServiceContracts.Enums;
-using System.Runtime.CompilerServices;
-
-namespace Entities.DTO
+﻿using ServiceContracts.Enums;
+using Entities;
+namespace ServiceContracts.DTO
 {
     /// <summary>
     /// Represents DTO class that is used as return tpe 
