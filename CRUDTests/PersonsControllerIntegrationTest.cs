@@ -16,15 +16,20 @@ namespace CRUDTests
 
         [Fact]
         public async Task Index_ToReturnView()
+        
         {
             //Arrange
 
             //Act
             HttpResponseMessage response = await _client.GetAsync("/Persons/Index");
             //Assert
-            response.IsSuccessStatusCode.Should().BeTrue();
           string responseBody=await  response.Content.ReadAsStringAsync();
 
+            Console.WriteLine($"Status Code: {(int)response.StatusCode}");
+            Console.WriteLine($"Request URI: {response.RequestMessage?.RequestUri}");
+            Console.WriteLine($"Response Body: {responseBody}");
+
+            response.IsSuccessStatusCode.Should().BeTrue();
             HtmlDocument html = new HtmlDocument();
             html.LoadHtml(responseBody);
             var document = html.DocumentNode;

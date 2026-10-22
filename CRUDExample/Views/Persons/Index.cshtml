@@ -4,34 +4,44 @@
 }
 
 <form class="" asp-controller="Persons" asp-action="Index" method="get">
-<h1>Persons</h1>
-<a asp-controller="Persons" asp-action="Create">Create Person</a>
-<a asp-controller="Persons" asp-action="PersonsPDF">Download as PDF</a>
-<a asp-controller="Persons" asp-action="PersonsCSV">Download as CSV</a>
-<div class="box flex ">
-    <div class="flex-1">
-        <select class="form-input" name="searchBy" >
-            @foreach(var field in ViewBag.SearchFields)
-            {
-                        if(ViewBag.CurrentSearchBy ==field.Key)
+    <div class="flex">
+        <div class="flex-1">
+            <span class="text-grey">Contacts</span>
+            <i class="fa-solid fa-caret-right" ></i>
+            <span class="text-grey">Persons</span>
+        </div>
+        <div class="flex-1 text-right">
+            <a asp-controller="Persons" asp-action="Create" class="button-link button-blue-back">Create Person</a>
+            <a asp-controller="Persons" asp-action="PersonsPDF" class="button-link button-blue-back ml">Download as PDF</a>
+            <a asp-controller="Persons" asp-action="PersonsCSV" class="button-link button-blue-back ml">Download as CSV</a>
+        </div>
+    </div>
+    <div class="table-container">
+        <div class="flex">
+            <div class="flex-1">
+                <h1>Persons</h1>
+            </div>
+            <div class="flex-3 text-right">
+                <label>Search by:</label>
+                <select class="form-input search-dropdown" name="searchBy" style="width:200px">
+                    @foreach (var field in ViewBag.SearchFields)
+                    {
+                        if (ViewBag.CurrentSearchBy == field.Key)
                         {
                             <option value="@field.Key" selected="selected">@field.Value</option>
-                        } else
-                        {
-                        <option value="@field.Key">@field.Value</option>
                         }
-            }
-        </select>
-    </div>
-    <div class="flex-1">
-        <input type="search" id="Search" class="form-input" placeholder="Search" name="searchString" value="@ViewBag.CurrentSearchString"/>
-    </div>
-    <div class="flex-1">
-        <button type="submit" class="button button-blue-back">Search</button>
-        <a asp-controller="Persons" asp-action="Index" class="link-hover">Clear All</a>
-    </div>
+                        else
+                        {
+                            <option value="@field.Key">@field.Value</option>
+                        }
+                    }
+                </select>
+                <input type="search" id="Search" class="form-input search-text" placeholder="Search" style="width:200px" name="searchString" value="@ViewBag.CurrentSearchString" />
+                <button type="submit" class="search-button">Search</button>
+                <a asp-controller="Persons" asp-action="Index" class="ml link-hover">Clear All</a>
+            </div>
+        </div>
 
-</div>
 <table class="table w-100 mt persons">
         <thead>
             <tr>
@@ -75,28 +85,32 @@
                         {"ColumnName",nameof(PersonResponse.ReceiveNewsLetters)},
                         {"DisplayName", "Receive News Letters"}
                     })
-                    <th>Options</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
-        @foreach(PersonResponse person in Model)
-        {
-            <tr>
-                <td style="width:15%">@person.PersonName</td>
-                <td style="width:20%">@person.Email</td>
-                <td style="width:14%">@person.DateOfBirth?.ToString("dd MMM yyyy")</td>
-                <td style="width:14%">@person.Age</td>
-                <td style ="width:14%">@person.Gender</td>
-                <td style="width:14%">@person.Country</td>
-                <td style="width:14%">@person.Address</td>
-                <td style="width:14%">@person.ReceiveNewsLetters</td>
-                <td style="width:20%">
-                    <a asp-controller="Persons" asp-action="Edit" asp-route-personID ="@person.PersonID">Edit</a>
-                    <a asp-controller="Persons" asp-action="Delete" asp-route-personID ="@person.PersonID">Delete</a>
-                </td>
-            </tr>
-        }
+            @foreach (PersonResponse person in Model)
+            {
+                <tr>
+                    <td style="width:10%">@person.PersonName</td>
+                    <td style="width:20%">@person.Email</td>
+                    <td style="width:10%">@person.DateOfBirth?.ToString("dd MMM yyyy")</td>
+                    <td style="width:6%">@person.Age</td>
+                    <td style="width:8%">@person.Gender</td>
+                    <td style="width:10%">@person.Country</td>
+                    <td style="width:15%">@person.Address</td>
+                    <td style="width:8%">@person.ReceiveNewsLetters</td>
+                    <td style="width:20%">
+                        <a asp-controller="Persons" asp-action="Edit" asp-route-personID="@person.PersonID" class="button-link button-blue-back">Edit</a>
+                        <a asp-controller="Persons" asp-action="Delete" asp-route-personID="@person.PersonID" class="button-link button-red-back">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
+
 </table>
 
+ </div>
+
+ 
 </form>

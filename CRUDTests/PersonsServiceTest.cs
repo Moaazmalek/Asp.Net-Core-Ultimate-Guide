@@ -1,17 +1,16 @@
 ﻿using AutoFixture;
- using Entities;
-using EntityFrameworkCoreMock;
+ using Entities; 
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Moq;
 using RepositoryContracts;
+using Serilog; 
 using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 using Services;
 using System.Linq.Expressions;
 using Xunit.Abstractions;
-
 namespace CRUDTests
 {
     public class PersonsServiceTest
@@ -20,15 +19,17 @@ namespace CRUDTests
         private readonly Mock<IPersonsRepository> _personRepositoryMock;
         private readonly IPersonsRepository _personsRepository;
         private readonly ITestOutputHelper _testOutputHelper;
-        private readonly IFixture _fixture;
+        private readonly IFixture _fixture; 
         public PersonsServiceTest(ITestOutputHelper testOutputHelper)
         {
             _fixture = new Fixture();
 
             _personRepositoryMock = new Mock<IPersonsRepository>();
             _personsRepository = _personRepositoryMock.Object;
+            var diagnosticContextMock = new Mock<IDiagnosticContext>();
+            var loggerMock = new Mock<ILogger<PersonsService>>();
 
-            _personService = new PersonsService(_personsRepository );
+            _personService = new PersonsService(_personsRepository,loggerMock.Object,diagnosticContextMock.Object);
              _testOutputHelper = testOutputHelper;
          }
         #region AddPerson

@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities
@@ -28,6 +27,13 @@ namespace Entities
         [ForeignKey("CountryID")]
         public Country? Country { get; set; }
 
-
+        public override string ToString() => $"Person ID: {PersonID}, " +
+                   $"Person Name: {PersonName ?? "N/A"}, " +
+                   $"Email: {Email ?? "N/A"}, " +
+                   $"Gender: {Gender ?? "N/A"}, " +
+                   $"Date of Birth: {(DateOfBirth.HasValue ? DateOfBirth.Value.ToString("yyyy-MM-dd") : "N/A")}, " +
+                   $"Address: {Address ?? "N/A"}, " +
+                   $"Country ID: {(CountryID.HasValue ? CountryID.ToString() : "N/A")}, " +
+                   $"Receive News Letters: {ReceiveNewsLetters}, ";
     }
 }

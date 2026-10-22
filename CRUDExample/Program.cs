@@ -1,34 +1,28 @@
-using Entities;
-using ServiceContracts;
-using Services;
-using Microsoft.EntityFrameworkCore;
-using RepositoryContracts;
-using Repositories;
-
+using CRUDExample;
+using Serilog; 
 var builder = WebApplication.CreateBuilder(args);
-// Register Services
-builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICountriesService, CountriesService>();
-builder.Services.AddScoped<IPersonsService, PersonsService>();
-builder.Services.AddScoped<IPersonsRepository, PersonsRepository>();
-builder.Services.AddScoped<ICountriesRepository, CountriesRepository>();
 
+builder.Services.ConfigureServices(builder.Configuration);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//Serilog 
+builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider services, LoggerConfiguration loggerConfiguration) =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    loggerConfiguration.ReadFrom.Configuration(context.Configuration) //read configuration settings from built-in IConfiguration
+    .ReadFrom.Services(services); // read out current app's services and make them available to serilog
 });
- 
 var app = builder.Build();
+app.UseSerilogRequestLogging(); //adds extra log message when the request response is completed
 // Use Services
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+//app.UseHttpLogging();
 if (builder.Environment.IsEnvironment("Test") ==false)
 {
 Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePath: "Rotativa");
 }
+
 
 app.UseStaticFiles();
 app.MapControllers();

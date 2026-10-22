@@ -1,5 +1,4 @@
 ﻿using CsvHelper;
-using Microsoft.EntityFrameworkCore;
 using ServiceContracts;
 using ServiceContracts.DTO;
 using Services.Helpers;
@@ -7,16 +6,21 @@ using Entities;
 using ServiceContracts.Enums;
 using System.Globalization;
 using RepositoryContracts;
-
+using Microsoft.Extensions.Logging;
+using Serilog;
+using SerilogTimings;
 namespace Services
 {
     public class PersonsService : IPersonsService
     {
         private readonly IPersonsRepository _personsRepository;
-        public PersonsService(IPersonsRepository personsRepository)
+        private readonly ILogger<PersonsService> _logger;
+        private readonly IDiagnosticContext _diagnosticContext;
+        public PersonsService(IPersonsRepository personsRepository, ILogger<PersonsService> logger,IDiagnosticContext diagnosticContext)
         {
             _personsRepository = personsRepository;
-            
+            _logger = logger;
+            _diagnosticContext = diagnosticContext;
         }
         
         public async Task<PersonResponse> AddPerson(PersonAddRequest? personAddRequets) 
@@ -36,7 +40,7 @@ namespace Services
 
         public async Task<List<PersonResponse>> GetAllPersons()
         {
-
+            _logger.LogInformation("GetAllPersons of PersonsService");
             var persons = await _personsRepository.GetAllPersons();
             return [.. persons.Select(p => p.ToPersonResponse())];
 
@@ -56,7 +60,11 @@ namespace Services
 
         public async Task<List<PersonResponse>> GetFilteredPersons(string searchBy, string? searchString)
         {
-            List<Person> persons = searchBy switch
+            _logger.LogInformation("GetFilteredPersons of PersonsService");
+
+            List<Person> persons;
+            using (Operation.Time("Time for Filtered Persons from Database")) { 
+             persons = searchBy switch
             {
                 nameof(PersonResponse.PersonName) => await _personsRepository.
                 GetFilteredPersons(temp => temp.PersonName.Contains(searchString)),
@@ -72,6 +80,8 @@ namespace Services
                 GetFilteredPersons(temp => temp.Address.Contains(searchString)),
                 _ => await _personsRepository.GetAllPersons()
             };
+            }
+            _diagnosticContext.Set("Persons", persons);
             return [..persons.Select(temp => temp.ToPersonResponse())];
         }
 
@@ -91,6 +101,7 @@ namespace Services
 
             };
              */
+            _logger.LogInformation("GetSortedPersons of PersonsService");
             if (string.IsNullOrEmpty(sortBy)) return allPersons;
             List<PersonResponse> sortedPersons = (sortBy, sortOrder) switch
             {
