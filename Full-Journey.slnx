@@ -7,6 +7,7 @@
   <Project Path="DIExampleServices/DIExampleServices.csproj" Id="4893ede4-adac-4bac-836e-80852dff08b7" />
   <Project Path="Entities/Entities.csproj" Id="86499adb-075c-4e91-a966-39e89ab8be31" />
   <Project Path="EnvironmentsExample/EnvironmentsExample.csproj" Id="2f72b1f3-2f02-4795-bd5f-e11eb721f868" />
+  <Project Path="Exceptions/Exceptions.csproj" Id="294dbebb-3514-4ead-847d-2a577b12fb4d" />
   <Project Path="IActionResultExample/IActionResultExample.csproj" Id="0eb788c5-7197-4ef0-943a-1455163d5434" />
   <Project Path="LayouViewsExample/LayouViewsExample.csproj" Id="0c67a911-a5b6-4a39-b05c-6a11766e915d" />
   <Project Path="MiddlewareExample/MiddlewareExample.csproj" Id="c7b3f64e-5b93-4f11-91f4-3388f87a1c05" />
