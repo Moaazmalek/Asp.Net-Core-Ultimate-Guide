@@ -11,6 +11,11 @@ namespace CRUDTests
 {
     public class PersonsControllerTest
     {
+        private readonly IPersonsGetterService _personsGetterService;
+        private readonly IPersonsAdderService _personsAdderService;
+        private readonly IPersonsDeleterService _personsDeleterService;
+        private readonly IPersonsUpdaterService _personsUpdaterService;
+        private readonly IPersonsSorterService _personsSorterService;
         private readonly IPersonsService _personsService;
         private readonly ICountriesService _countriesService;
         private readonly ILogger<PersonsController> _logger;
@@ -18,7 +23,13 @@ namespace CRUDTests
         private readonly Mock<IPersonsService> _personsServiceMock;
         private readonly Mock<ILogger<PersonsController>> _loggerMock;
         private readonly IFixture _fixture;
-         
+
+        private readonly Mock<IPersonsGetterService> _personsGetterServiceMock;
+        private readonly Mock<IPersonsAdderService> _personsAdderServiceMock;
+        private readonly Mock<IPersonsUpdaterService> _personsUpdaterServiceMock;
+        private readonly Mock<IPersonsSorterService> _personsSorterServiceMock;
+        private readonly Mock<IPersonsDeleterService> _personsDeleterServiceMock;
+
         public PersonsControllerTest()
         {
             _fixture = new Fixture();
@@ -26,13 +37,24 @@ namespace CRUDTests
             _personsServiceMock = new Mock<IPersonsService>();
             _personsService = _personsServiceMock.Object;
             _loggerMock = new Mock<ILogger<PersonsController>>();
-
+            _personsGetterServiceMock = new Mock<IPersonsGetterService>();
+            _personsAdderServiceMock = new Mock<IPersonsAdderService>();
+            _personsDeleterServiceMock = new Mock<IPersonsDeleterService>();
+            _personsUpdaterServiceMock = new Mock<IPersonsUpdaterService>();
+            _personsSorterServiceMock = new Mock<IPersonsSorterService>();
 
             _countriesServiceMock = new Mock<ICountriesService>();
             _countriesService = _countriesServiceMock.Object;
             _logger = _loggerMock.Object;
+            _personsGetterService = _personsGetterServiceMock.Object;
+            _personsAdderService = _personsAdderServiceMock.Object;
+            _personsUpdaterService = _personsUpdaterServiceMock.Object;
+            _personsDeleterService = _personsDeleterServiceMock.Object;
+            _personsSorterService = _personsSorterServiceMock.Object;
 
-            
+
+
+
         }
 
         #region Index
@@ -41,7 +63,7 @@ namespace CRUDTests
         {
             //Arrange 
             List<PersonResponse> persons_response_list = _fixture.Create<List<PersonResponse>>();
-            PersonsController personsController = new PersonsController(_personsService, _countriesService,_logger);
+            PersonsController personsController = new (_personsGetterService, _personsAdderService, _personsUpdaterService, _personsDeleterService, _personsSorterService, _countriesService, _logger);
 
             _personsServiceMock.Setup(temp => temp.GetFilteredPersons(It.IsAny<string>(), It.IsAny<string>()))
                 .ReturnsAsync(persons_response_list);
@@ -97,7 +119,7 @@ namespace CRUDTests
             PersonResponse person_response = _fixture.Create<PersonResponse>();
 
             List<CountryResponse> countries = _fixture.Create<List<CountryResponse>>();
-            PersonsController personsController = new(_personsService, _countriesService,_logger);
+            PersonsController personsController = new(_personsGetterService,_personsAdderService,_personsUpdaterService,_personsDeleterService,_personsSorterService,_countriesService,_logger);
 
             _countriesServiceMock.Setup(temp => temp.GetAllCountries())
                 .ReturnsAsync(countries);
