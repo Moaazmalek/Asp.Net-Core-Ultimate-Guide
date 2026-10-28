@@ -2,8 +2,10 @@
 using ContactsManager.Core.Domain.Entities;
 using System.Text.Json;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ContactsManager.Core.Domain.IdentityEntities;
 namespace ContactsManager.Infrastructure.Data { 
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser,ApplicationRole,Guid>
     {
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Person> Persons { get; set; }
